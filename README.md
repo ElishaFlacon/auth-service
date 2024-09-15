@@ -6,7 +6,7 @@ Shelly - это "highload" расписание для ВУЗа
 
 ### 🛠️ Инструменты:
 
-- [**Go**](https://go.dev/)
+- [**Golang**](https://go.dev/)
 - [**GRPC**](https://grpc.io/)
 - [**Kafka**](https://kafka.apache.org/)
 - [**PostgreSQL**](https://www.postgresql.org/)
