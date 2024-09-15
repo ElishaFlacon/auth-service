@@ -1,6 +1,6 @@
 ### Shelly
 
-Shelly - это "hightload" расписание для ВУЗа
+Shelly - это "highload" расписание для ВУЗа
 
 ---
 
