@@ -6,10 +6,11 @@ Shelly - это "highload" расписание для ВУЗа
 
 ### 🛠️ Инструменты:
 
-- Go (GRPC)
-- Kafka
-- PostgreSQL
-- Docker
+- [**Go**](https://go.dev/)
+- [**GRPC**](https://grpc.io/)
+- [**Kafka**](https://kafka.apache.org/)
+- [**PostgreSQL**](https://www.postgresql.org/)
+- [**Docker**](https://www.docker.com/)
 
 ---
 
@@ -48,12 +49,7 @@ README.md
 
 ### ⚡ Немного дополнительной информации:
 
-- Используем эти [**правилам**](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13) для создание коммитов и веток
-- Документация [**Golang**](https://go.dev/)
-- Документация [**GRPC**](https://grpc.io/)
-- Документация [**Kafka**](https://kafka.apache.org/)
-- Документация [**PostgreSQL**](https://www.postgresql.org/)
-- Документация [**Docker**](https://www.docker.com/)
+- Пользуемся [**этими правилами**](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13) для создание коммитов и веток
 - P.S. Все баги и недочеты - это фичи
 
 <br>
