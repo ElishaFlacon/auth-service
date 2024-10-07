@@ -12,7 +12,6 @@ linters:
     - gofumpt
     - bidichk
     - bodyclose
-    - canonicalheader
     - cyclop
     - depguard
     - dupl
