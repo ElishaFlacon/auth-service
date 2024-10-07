@@ -17,11 +17,11 @@ jobs:
         with:
           go-version: "1.22"
 
-      - name: Golangci-lint
-        uses: golangci/golangci-lint-action@v6.1.1
-
       - name: Gofumpt
         run: go install mvdan.cc/gofumpt@latest && gofumpt -l -w .
+
+      - name: Golangci-lint
+        uses: golangci/golangci-lint-action@v6.1.1
 
       - name: Build
         run: go build -v ./...
