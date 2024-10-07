@@ -2,41 +2,39 @@ name: Go
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    # INSTALL GO
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.22'
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.22"
 
-    # FORMATTER
-    - name: Install gofumpt
-      run: go install mvdan.cc/gofumpt@latest
-    - name: Format Code with gofumpt
-      run: gofumpt -l -w .
+      - name: Set GOROOT
+        run: echo "GOROOT=$(go env GOROOT)" >> $GITHUB_ENV
 
-    # LINTER
-    - name: Install golangci-lint
-      run: |
-        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.1
-    - name: Run Linter
-      run: golangci-lint run
+      - name: Install Formatter gofumpt
+        run: go install mvdan.cc/gofumpt@latest
 
-    # BUILD
-    - name: Build
-      run: go build -v ./...
+      - name: Install Linter golangci-lint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.1
 
-    # TESTS
-    - name: Test
-      run: go test -v ./...
+      - name: Run Formatter gofumpt
+        run: gofumpt -l -w .
 
+      - name: Run Linter golangci-lint
+        run: golangci-lint run
+
+      - name: Run Build
+        run: go build -v ./...
+
+      - name: Run Tests
+        run: go test -v ./...
