@@ -17,18 +17,14 @@ jobs:
         with:
           go-version: "1.22"
 
-      - name: Install Formatter gofumpt
-        run: go install mvdan.cc/gofumpt@latest
+      - name: Golangci-lint
+        uses: golangci/golangci-lint-action@v6.1.1
 
-      - name: Install Linter golangci-lint
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.1
+      # - name: Install Formatter gofumpt
+      #   run: go install mvdan.cc/gofumpt@latest
 
-      - name: Run Formatter gofumpt
-        run: gofumpt -l -w .
-
-      - name: Run Linter golangci-lint
-        run: golangci-lint run
+      # - name: Run Formatter gofumpt
+      #   run: gofumpt -l -w .
 
       - name: Run Build
         run: go build -v ./...
