@@ -8,5 +8,5 @@ var (
 )
 
 func main() {
-	fmt.Println("Этот код был сгенерирован!asdasdasdsad ", a+b)
+	fmt.Println("Этот код был сгенерирован!asdasdasdsad 22", a+b)
 }
