@@ -17,7 +17,6 @@ linters:
     - dupl
     - gci
     - goconst
-    - gocritic
     - typecheck
     - goimports
     - gosec

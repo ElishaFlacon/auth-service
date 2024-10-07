@@ -17,9 +17,6 @@ jobs:
         with:
           go-version: "1.22"
 
-      - name: Set GOROOT
-        run: echo "GOROOT=$(go env GOROOT)" >> $GITHUB_ENV
-
       - name: Install Formatter gofumpt
         run: go install mvdan.cc/gofumpt@latest
 
