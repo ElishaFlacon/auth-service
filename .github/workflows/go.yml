@@ -1,0 +1,42 @@
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    # INSTALL GO
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+    # FORMATTER
+    - name: Install gofumpt
+      run: go install mvdan.cc/gofumpt@latest
+    - name: Format Code with gofumpt
+      run: gofumpt -l -w .
+
+    # LINTER
+    - name: Install golangci-lint
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.1
+    - name: Run Linter
+      run: golangci-lint run
+
+    # BUILD
+    - name: Build
+      run: go build -v ./...
+
+    # TESTS
+    - name: Test
+      run: go test -v ./...
+
