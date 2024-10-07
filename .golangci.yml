@@ -1,0 +1,30 @@
+linters:
+  enable:
+    # Default Enabled
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+
+    # Custom Enabled
+    - gofumpt
+    - bidichk
+    - bodyclose
+    - canonicalheader
+    - cyclop
+    - depguard
+    - dupl
+    - gci
+    - goconst
+    - gocritic
+    - typecheck
+    - goimports
+    - gosec
+    - whitespace
+    - lll
+
+linters-settings:
+  lll:
+    line-length: 75
