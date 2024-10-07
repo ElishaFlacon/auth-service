@@ -19,7 +19,6 @@ jobs:
 
       - name: Gofumpt
         run: go install mvdan.cc/gofumpt@latest && gofumpt -l -w .
-        continue-on-error: true
 
       - name: Golangci-lint
         uses: golangci/golangci-lint-action@v6.1.1
