@@ -20,14 +20,11 @@ jobs:
       - name: Golangci-lint
         uses: golangci/golangci-lint-action@v6.1.1
 
-      # - name: Install Formatter gofumpt
-      #   run: go install mvdan.cc/gofumpt@latest
+      - name: Gofumpt
+        run: go install mvdan.cc/gofumpt@latest && gofumpt -l -w .
 
-      # - name: Run Formatter gofumpt
-      #   run: gofumpt -l -w .
-
-      - name: Run Build
+      - name: Build
         run: go build -v ./...
 
-      - name: Run Tests
+      - name: Tests
         run: go test -v ./...
