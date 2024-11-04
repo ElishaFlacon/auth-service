@@ -1,0 +1,5 @@
+.idea
+.git
+.golangci.yml
+.vscode
+.github

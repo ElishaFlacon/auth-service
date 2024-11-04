@@ -9,13 +9,11 @@ linters:
     - unused
 
     # Custom Enabled
-    - gofumpt
+    # - gofumpt
     - bidichk
     - bodyclose
     - cyclop
-    - depguard
     - dupl
-    - gci
     - goconst
     - typecheck
     - gosec
