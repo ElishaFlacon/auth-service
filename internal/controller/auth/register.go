@@ -1,5 +1,6 @@
 package auth
 
-func (i Implementation) Register() (string, error) {
-	return "", nil
+import "net/http"
+
+func (i Implementation) Register(w http.ResponseWriter, r *http.Request) {
 }

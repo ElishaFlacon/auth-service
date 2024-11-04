@@ -1,5 +1,6 @@
 package auth
 
-func (i Implementation) Logout() (string, error) {
-	return "", nil
+import "net/http"
+
+func (i Implementation) Logout(w http.ResponseWriter, r *http.Request) {
 }

@@ -1,7 +1,7 @@
 package auth
 
 import (
-	def "github.com/ElishaFlacon/shelly/internal/repository"
+	def "github.com/ElishaFlacon/auth-service/internal/repository"
 )
 
 var _ def.AuthRepository = (*repository)(nil)

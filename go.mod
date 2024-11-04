@@ -1,4 +1,4 @@
-module github.com/ElishaFlacon/shelly
+module github.com/ElishaFlacon/auth-service
 
 go 1.22.1
 

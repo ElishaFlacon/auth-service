@@ -1,9 +1,10 @@
 package main
 
 import (
+	"context"
 	"log"
 
-	"github.com/ElishaFlacon/shelly/internal/app"
+	"github.com/ElishaFlacon/auth-service/internal/app"
 )
 
 const (
@@ -12,7 +13,9 @@ const (
 )
 
 func main() {
-	a, err := app.NewApp()
+	ctx := context.Background()
+
+	a, err := app.NewApp(ctx)
 	if err != nil {
 		log.Fatalf(errMsgFailedToInitApp, err.Error())
 	}

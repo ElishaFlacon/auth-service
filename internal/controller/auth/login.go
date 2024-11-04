@@ -1,5 +1,6 @@
 package auth
 
-func (i Implementation) Login() (string, error) {
-	return "", nil
+import "net/http"
+
+func (i Implementation) Login(w http.ResponseWriter, r *http.Request) {
 }

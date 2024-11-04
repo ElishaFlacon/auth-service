@@ -3,13 +3,14 @@ package app
 import (
 	"log"
 
-	"github.com/ElishaFlacon/shelly/internal/config"
-	"github.com/ElishaFlacon/shelly/internal/controller/auth"
-	"github.com/ElishaFlacon/shelly/internal/repository"
-	"github.com/ElishaFlacon/shelly/internal/service"
+	"github.com/ElishaFlacon/auth-service/internal/config"
+	"github.com/ElishaFlacon/auth-service/internal/controller/auth"
+	"github.com/ElishaFlacon/auth-service/internal/repository"
+	"github.com/ElishaFlacon/auth-service/internal/service"
+	"github.com/go-chi/chi/v5"
 
-	authRepository "github.com/ElishaFlacon/shelly/internal/repository/auth"
-	authService "github.com/ElishaFlacon/shelly/internal/service/auth"
+	authRepository "github.com/ElishaFlacon/auth-service/internal/repository/auth"
+	authService "github.com/ElishaFlacon/auth-service/internal/service/auth"
 )
 
 const (
@@ -76,10 +77,13 @@ func (p *provider) AuthService() service.AuthService {
 	return p.authService
 }
 
-func (p *provider) AuthImpl() *auth.Implementation {
+func (p *provider) AuthImpl(httpServer *chi.Mux) *auth.Implementation {
 	if p.authImpl == nil {
 		service := p.AuthService()
-		p.authImpl = auth.NewImplementation(service)
+		p.authImpl = auth.NewImplementation(
+			service,
+			httpServer,
+		)
 	}
 
 	return p.authImpl

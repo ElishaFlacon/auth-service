@@ -1,5 +1,9 @@
 package auth
 
-func (i *Implementation) CheckAuth() (string, error) {
-	return "", nil
+import "net/http"
+
+func (i *Implementation) CheckAuth(
+	w http.ResponseWriter,
+	r *http.Request,
+) {
 }
