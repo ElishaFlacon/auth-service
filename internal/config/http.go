@@ -3,7 +3,11 @@ package config
 import (
 	"errors"
 	"net"
+	"net/http"
 	"os"
+	"time"
+
+	"github.com/go-chi/chi/v5"
 )
 
 const (
@@ -16,6 +20,7 @@ const (
 
 type HTTPConfig interface {
 	Address() string
+	ServerConfig(router *chi.Mux) *http.Server
 }
 
 type httpConfig struct {
@@ -43,4 +48,14 @@ func NewHTTPConfig() (*httpConfig, error) {
 
 func (cfg *httpConfig) Address() string {
 	return net.JoinHostPort(cfg.host, cfg.port)
+}
+
+func (cfg *httpConfig) ServerConfig(router *chi.Mux) *http.Server {
+	return &http.Server{
+		Addr:         cfg.Address(),
+		Handler:      router,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  15 * time.Second,
+	}
 }

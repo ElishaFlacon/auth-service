@@ -4,7 +4,6 @@ import (
 	"context"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -71,27 +70,23 @@ func (a *App) initConfig(_ context.Context) error {
 	return nil
 }
 
+func (a *App) initMiddlewares(router *chi.Mux) {
+	router.Use(middleware.Logger)
+}
+
+func (a *App) initRoutes(router *chi.Mux) {
+	a.provider.AuthImpl(router).RegisterRoutes()
+}
+
 func (a *App) initHTTPServer(_ context.Context) error {
 	router := chi.NewRouter()
 
-	router.Use(middleware.Logger)
+	a.initMiddlewares(router)
+	a.initRoutes(router)
 
-	a.provider.AuthImpl(router)
-
-	// TODO: move to config
-	address := a.provider.httpConfig.Address()
-	server := &http.Server{
-		Addr:         address,
-		Handler:      router,
-		ReadTimeout:  10 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  15 * time.Second,
-	}
-
-	a.httpServer = server
+	a.httpServer = a.provider.httpConfig.ServerConfig(router)
 
 	// TODO: graceful shutdown
-	// server.Shutdown(ctx)
 
 	return nil
 }
