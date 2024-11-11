@@ -1,0 +1,16 @@
+{
+    "name": "dummyjson",
+    "url": "https://dummyjson.com",
+    "description": "Dummy JSON API",
+    "endpoints": {
+        "register": {
+            "method": "POST",
+            "path": "/users/add",
+            "fields": {
+                "firstName": "string",
+                "lastName": "string",
+                "age": "int"
+            }
+        }
+    }
+}
