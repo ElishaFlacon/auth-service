@@ -1,15 +1,28 @@
 {
     "name": "dummyjson",
     "url": "https://dummyjson.com",
-    "description": "Dummy JSON API",
+    "description": "ExampleDummy JSON API",
+    "headers": {
+        "Content-Type": "application/json"
+    },
     "endpoints": {
         "register": {
-            "method": "POST",
             "path": "/users/add",
+            "method": "POST",
+            "headers": {},
             "fields": {
-                "firstName": "string",
-                "lastName": "string",
-                "age": "int"
+                "firstName": {
+                    "type": "string",
+                    "required": true
+                },
+                "lastName": {
+                    "type": "string",
+                    "required": true
+                },
+                "age": {
+                    "type": "int",
+                    "required": true
+                }
             }
         }
     }
